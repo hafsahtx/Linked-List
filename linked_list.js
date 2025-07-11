@@ -6,21 +6,16 @@ class Node{
     }
 }
 class LinkedList{
-    constructor()
-    {
+    constructor(){
         this.head=null
     }
-    append(value)
-    {
-        let newnode=new Node(value)
-       
-        let current=this.head
-        while(current.next)
-        {
-            current=current.next
+    append(value){
+        let newnode=new Node(value);
+        let current=this.head;
+        while(current.next){
+            current=current.next;
         }
-        current.next=newnode
-        
+        current.next=newnode;
     }
     prepend(value){
         let newnode = new Node(value);
@@ -103,18 +98,60 @@ class LinkedList{
         }
         console.log(result + "null");
     }
+    insertAt(value,index){
+        let count = 1;
+        if (index===0){
+             let current = this.head;
+             let newnode = new Node(value);
+             this.head = newnode;
+             newnode.next = current;
+             return;
+        }
+        let current = this.head;
+        while(current){ 
+            if(count===index){
+                let newnode = new Node(value);
+                newnode.next = current.next;
+                current.next = newnode;
+            }
+            count++;
+            current = current.next;
+            
+        }
+    }
+    removeAt(index){
+        let current = this.head;
+        let count = 1;
+        if(index===0){
+            this.head = current.next;
+        }else{
+            while(current){
+                if(count===index){
+                    current.next = current.next.next;
+                    return;
+                }
+                count++;
+                current = current.next
+            }
+        }
+    }
    
 }
 let list=new LinkedList()
 list.prepend(1)
 list.append(2)
 list.append(3)
-list.printList()
 list.size()
 list.getHead()
 list.getTail()
 list.at(2)
-list.contains(5)
+list.contains(35)
 //list.popNode()
 list.findNode(3)
 list.toStringNode();
+list.insertAt(5,0);
+list.toStringNode();
+list.removeAt(0);
+list.toStringNode();
+
+
