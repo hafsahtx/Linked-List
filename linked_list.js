@@ -137,21 +137,6 @@ class LinkedList{
     }
    
 }
-let list=new LinkedList()
-list.prepend(1)
-list.append(2)
-list.append(3)
-list.size()
-list.getHead()
-list.getTail()
-list.at(2)
-list.contains(35)
-//list.popNode()
-list.findNode(3)
-list.toStringNode();
-list.insertAt(5,0);
-list.toStringNode();
-list.removeAt(0);
-list.toStringNode();
+
 
 
