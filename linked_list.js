@@ -141,14 +141,21 @@ export class LinkedList{
     }
     removeAt(index){
         let current = this.head;
-        let count = 1;
+        let pop;
+        let size = this.size();
+        let count = 0;
         if(index===0){
+            pop = current;
             this.head = current.next;
+            return pop;
+        }else if(index>=size || index<0){
+            return 'index out of bounds';
         }else{
             while(current){
-                if(count===index){
+                if(count===index-1){
+                    pop = current.next;
                     current.next = current.next.next;
-                    return;
+                    return pop;
                 }
                 count++;
                 current = current.next
