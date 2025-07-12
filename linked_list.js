@@ -12,6 +12,10 @@ export class LinkedList{
     append(value){
         let newnode=new Node(value);
         let current=this.head;
+        if(current === null){
+            this.head=newnode;
+            return;
+        }
         while(current.next){
             current=current.next;
         }
@@ -19,11 +23,14 @@ export class LinkedList{
     }
     prepend(value){
         let newnode = new Node(value);
-         if(!this.head)
-        {
-            this.head=newnode
-            return
+        if(!this.head){
+            this.head=newnode;
+            return;
         }
+        let current = this.head;
+        this.head = newnode;
+        newnode.next = current;
+        return;
     }
     size(){
         let count = 1;
