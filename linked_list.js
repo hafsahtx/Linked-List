@@ -56,7 +56,6 @@ export class LinkedList{
         let count = this.size();
         if(index>=count || index<0){
             return 'index out of bounds';
-            
         }
         let current = this.head;
         while(index){
@@ -66,12 +65,23 @@ export class LinkedList{
         return current;
     }
     popNode(){
-        let current = this.head;
-        while(current.next.next){
-            current = current.next;
+        let current = this.head; //head   cat, dog
+        let pop;
+        if(!this.head){
+            return;
         }
-        current.next = null;
-        console.log(current)
+        if(!this.head.next){
+            pop = current;
+            this.head = null;
+            return pop;
+        }else{
+            while(current.next.next){
+                current = current.next;
+            }
+            pop = current.next;
+            current.next = null;
+            return pop;
+        }
     }
     contains(value){
         let current = this.head;
