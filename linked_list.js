@@ -68,7 +68,7 @@ export class LinkedList{
         let current = this.head; //head   cat, dog
         let pop;
         if(!this.head){
-            return;
+            return null;
         }
         if(!this.head.next){
             pop = current;
@@ -88,10 +88,10 @@ export class LinkedList{
         
         while(current){
             if(current.value === value){
-                return "true";
+                return true;
         } current = current.next;
         }
-        return "false";
+        return false;
         
     }
     findNode(value){
@@ -106,7 +106,7 @@ export class LinkedList{
         }
         return null;
     }
-    toStringNode(){
+    toString(){
         let current = this.head;
         let result = "";
         while(current){
