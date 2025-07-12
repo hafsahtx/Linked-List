@@ -86,18 +86,12 @@ export class LinkedList{
     contains(value){
         let current = this.head;
         
-        while(current.next){
+        while(current){
             if(current.value === value){
-                console.log("true");
-                return;
+                return "true";
         } current = current.next;
         }
-        if(current.value === value){
-            console.log("true");
-                return;
-        }else{
-            console.log("false")
-        }
+        return "false";
         
     }
     findNode(value){
@@ -105,11 +99,12 @@ export class LinkedList{
         let current = this.head;
         while(current){
             if(current.value === value){
-                console.log(`${current.value} at index ${index}`)
+                return index;
             }
             index++;
             current = current.next;
         }
+        return null;
     }
     toStringNode(){
         let current = this.head;
@@ -121,23 +116,26 @@ export class LinkedList{
         console.log(result + "null");
     }
     insertAt(value,index){
-        let count = 1;
+        let count = 0;
+        let size = this.size();
+        let current = this.head;
         if (index===0){
-             let current = this.head;
              let newnode = new Node(value);
              this.head = newnode;
              newnode.next = current;
              return;
+        }else if(index>=size || index<0){
+            return 'index out of bounds';
         }
-        let current = this.head;
         while(current){ 
-            if(count===index){
-                let newnode = new Node(value);
+            if(count===index-1){ 
+                let newnode = new Node(value); 
                 newnode.next = current.next;
-                current.next = newnode;
+                current.next = newnode;  
+                return;
             }
             count++;
-            current = current.next;
+            current = current.next; //current =1
             
         }
     }
