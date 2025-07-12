@@ -33,32 +33,37 @@ export class LinkedList{
         return;
     }
     size(){
-        let count = 1;
+        let count = 0;
         let current = this.head;
-        while(current.next){
+        while(current){
             count+=1;
             current = current.next;
         }
-        console.log(`size: ${count}`);
+        return count;
     }
     getHead(){
         let current = this.head;
-        console.log(current);
+        return current;
     }
     getTail(){
         let current = this.head;
         while(current.next){
             current = current.next;
         }
-        console.log(current)
+        return current;
     }
     at(index){
+        let count = this.size();
+        if(index>=count || index<0){
+            return 'index out of bounds';
+            
+        }
         let current = this.head;
         while(index){
             current = current.next;
             index--;
         }
-        console.log(current)
+        return current;
     }
     popNode(){
         let current = this.head;
